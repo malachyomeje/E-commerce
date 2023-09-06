@@ -60,6 +60,21 @@ public class JwtService {
 
     }
 
+
+
+    public String generateSignUpConfirmationToken(String email){
+        Date currentDate = new Date();
+        Date expirationDate = new Date(currentDate.getTime() + 900000);
+
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(new Date())
+                .setExpiration(expirationDate)
+                .signWith(SignatureAlgorithm.HS256, JWT_SECRET)
+                .compact();
+    }
+
+
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);

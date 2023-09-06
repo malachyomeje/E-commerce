@@ -35,12 +35,19 @@ public class Users implements UserDetails {
     private String firstName;
     private String lastName;
     private String email;
+    private String phoneNumber;
     private String password;
+    private String confirmPassword;
     private boolean locked=false;
     @Enumerated(EnumType.STRING)
     private UsersRole role;
     @CreationTimestamp
     private Date date;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "token_id")
+    private Token token;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
