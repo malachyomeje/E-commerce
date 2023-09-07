@@ -1,14 +1,12 @@
 package com.commerce.Ecommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,5 +27,8 @@ public class Category {
     private Date creationTime;
     @UpdateTimestamp
     private  Date updateTime;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> product;
 
 }
