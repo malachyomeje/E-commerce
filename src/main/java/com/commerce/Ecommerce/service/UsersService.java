@@ -1,6 +1,4 @@
 package com.commerce.Ecommerce.service;
-
-import com.commerce.Ecommerce.dtos.request.LockAccountDto;
 import com.commerce.Ecommerce.dtos.request.UsersDto;
 import com.commerce.Ecommerce.dtos.request.UsersUpdateDto;
 import com.commerce.Ecommerce.dtos.response.ApiResponse;
