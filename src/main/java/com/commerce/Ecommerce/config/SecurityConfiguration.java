@@ -31,6 +31,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/api/v1/users/**",
+                       "/api/v2/category/**",
                         "/api/v1/auth/authenticate",
                         "/v3/api-docs/**",
                         "/configuration/**",
