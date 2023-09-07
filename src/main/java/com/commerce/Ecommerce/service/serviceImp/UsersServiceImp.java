@@ -1,4 +1,4 @@
-package com.commerce.Ecommerce.service;
+package com.commerce.Ecommerce.service.serviceImp;
 
 import com.commerce.Ecommerce.config.JwtService;
 import com.commerce.Ecommerce.dtos.request.LockAccountDto;
@@ -10,6 +10,7 @@ import com.commerce.Ecommerce.model.Token;
 import com.commerce.Ecommerce.model.Users;
 import com.commerce.Ecommerce.repository.TokenRepository;
 import com.commerce.Ecommerce.repository.UsersRepository;
+import com.commerce.Ecommerce.service.UsersService;
 import com.commerce.Ecommerce.util.Verifications;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
