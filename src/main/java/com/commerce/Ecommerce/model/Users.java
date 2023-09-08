@@ -46,6 +46,11 @@ public class Users implements UserDetails {
 
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shoppingCart_id")
+    private ShoppingCart shoppingCart;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "token_id")
     private Token token;
 
