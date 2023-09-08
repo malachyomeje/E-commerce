@@ -6,8 +6,10 @@ import com.commerce.Ecommerce.dtos.request.UsersDto;
 import com.commerce.Ecommerce.dtos.request.UsersUpdateDto;
 import com.commerce.Ecommerce.dtos.response.ApiResponse;
 import com.commerce.Ecommerce.enums.UsersRole;
+import com.commerce.Ecommerce.model.ShoppingCart;
 import com.commerce.Ecommerce.model.Token;
 import com.commerce.Ecommerce.model.Users;
+import com.commerce.Ecommerce.repository.ShoppingCartRepository;
 import com.commerce.Ecommerce.repository.TokenRepository;
 import com.commerce.Ecommerce.repository.UsersRepository;
 import com.commerce.Ecommerce.service.UsersService;
@@ -27,6 +29,7 @@ public class UsersServiceImp implements UsersService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final TokenRepository tokenRepository;
+    private  final ShoppingCartRepository shoppingCartRepository;
 
 
     @Override
@@ -68,10 +71,15 @@ public class UsersServiceImp implements UsersService {
        String jwtToken = jwtService.generateSignUpConfirmationToken(usersDto.getEmail());
         usersRepository.save(users1);
 
+        ShoppingCart shoppingCart = new ShoppingCart();
+        users1.setShoppingCart(shoppingCart);
+        shoppingCartRepository.save(shoppingCart);
+
+
+
         Token token1 = new Token();
         users1.setToken(token1);
         token1.setToken(jwtToken);
-
         tokenRepository.save(token1);
 
         return new ApiResponse<>("registration successful",users1.getEmail());
