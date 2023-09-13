@@ -1,11 +1,10 @@
 package com.commerce.Ecommerce.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +18,11 @@ public class ShoppingCart {
 
     @Id
     private Long id;
+
+
+    @OneToMany( mappedBy = "shoppingCart")
+
+    private List<CartItem> CartItemList;
 
 
 

@@ -1,8 +1,11 @@
 package com.commerce.Ecommerce.model;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,28 +13,24 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Builder
-public class Product {
-
+public class CartItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     @Id
     private Long id;
 
-    private String name;
-    private String description;
-    private String imageUrl;
+    private String productName;
     private int quantity;
     private float price;
+    private float totalPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    @JsonIgnore
-    private Category category;
+     @ManyToOne
+     @JoinColumn(name = "shoppingcart_id")
+     @JsonIgnore
+    private  ShoppingCart shoppingCart;
 
-    @OneToOne
-    @JoinColumn(name = "Item cartItem")
-    @JsonIgnore
-    private CartItem cartItem;
+//     @OneToOne
+//    private Product product;
 
 
 }

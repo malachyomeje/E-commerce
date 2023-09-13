@@ -33,6 +33,7 @@ public class SecurityConfiguration {
                         "/api/v1/users/**",
                        "/api/v2/category/**",
                         "/api/v3/product/**",
+                        "/api/v4/cartItem/**",
                         "/api/v1/auth/authenticate",
                         "/v3/api-docs/**",
                         "/configuration/**",
