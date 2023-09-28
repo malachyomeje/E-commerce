@@ -34,7 +34,8 @@ public class SecurityConfiguration {
                        "/api/v2/category/**",
                         "/api/v3/product/**",
                         "/api/v4/cartItem/**",
-                        "/api/v1/auth/authenticate",
+                       " api/v5/payStack",
+                        "/api/v0/auth/authenticate",
                         "/v3/api-docs/**",
                         "/configuration/**",
                         "/swagger*/**"
