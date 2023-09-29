@@ -9,10 +9,13 @@ import com.commerce.Ecommerce.enums.UsersRole;
 import com.commerce.Ecommerce.model.ShoppingCart;
 import com.commerce.Ecommerce.model.Token;
 import com.commerce.Ecommerce.model.Users;
+import com.commerce.Ecommerce.model.Wallet;
 import com.commerce.Ecommerce.repository.ShoppingCartRepository;
 import com.commerce.Ecommerce.repository.TokenRepository;
 import com.commerce.Ecommerce.repository.UsersRepository;
+import com.commerce.Ecommerce.repository.WalletRepository;
 import com.commerce.Ecommerce.service.UsersService;
+import com.commerce.Ecommerce.service.WalletService;
 import com.commerce.Ecommerce.util.Verifications;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +33,8 @@ public class UsersServiceImp implements UsersService {
     private final JwtService jwtService;
     private final TokenRepository tokenRepository;
     private  final ShoppingCartRepository shoppingCartRepository;
+    private final WalletService walletService;
+    private  final WalletRepository walletRepository;
 
 
     @Override
@@ -75,16 +80,20 @@ public class UsersServiceImp implements UsersService {
         users1.setShoppingCart(shoppingCart);
         shoppingCartRepository.save(shoppingCart);
 
-
+        Wallet wallet = walletService.registerWallet(users1.getEmail());
+        users1.setWallet(wallet);
+        walletRepository.save(wallet);
 
         Token token1 = new Token();
         users1.setToken(token1);
         token1.setToken(jwtToken);
         tokenRepository.save(token1);
 
-        return new ApiResponse<>("registration successful",users1.getEmail());
+        return new ApiResponse<>("registration successful"
+                +"..  Your wallet pin is 123456789"
+                +"  Keep your pin save.",
+                users1.getEmail());
     }
-
 
     @Override
     public List<UsersDto>findAllUsers(){

@@ -30,12 +30,13 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
+                        "/api/v0/auth/authenticate",
                         "/api/v1/users/**",
                        "/api/v2/category/**",
                         "/api/v3/product/**",
                         "/api/v4/cartItem/**",
                        " api/v5/payStack",
-                        "/api/v0/auth/authenticate",
+                        "api/v6/wallet",
                         "/v3/api-docs/**",
                         "/configuration/**",
                         "/swagger*/**"
