@@ -1,13 +1,12 @@
 package com.commerce.Ecommerce.controller;
 
 import com.commerce.Ecommerce.dtos.request.ChangeWalletPinDto;
+import com.commerce.Ecommerce.dtos.request.FoundWalletDto;
 import com.commerce.Ecommerce.dtos.response.ApiResponse;
 import com.commerce.Ecommerce.service.WalletService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,4 +20,8 @@ public class WalletController {
         return walletService.changeWalletPin(changeWalletPinDto);
     }
 
+    @PostMapping("foundWallet")
+    public ResponseEntity<String> foundWallet( @RequestBody FoundWalletDto foundWalletDto1){
+        return walletService.foundWallet(foundWalletDto1);
+    }
 }

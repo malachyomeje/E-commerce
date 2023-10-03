@@ -7,6 +7,7 @@ import com.commerce.Ecommerce.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,12 +22,19 @@ public class AuthenticationService {
 
 
     public ApiResponse authenticate(AuthenticationRequest request) {
+        try {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
                         request.getPassword()
                 )
         );
+        } catch (AuthenticationException e) {
+            // Authentication failed, return "wrong password" response
+            return new ApiResponse<>("Wrong password  or email");
+        }
+
+
         Optional<Users> user = repository.findByEmail(request.getEmail());
         if (user.isEmpty()) {
             return new ApiResponse<>("user not found", user);
