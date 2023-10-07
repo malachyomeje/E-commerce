@@ -10,7 +10,7 @@ import lombok.*;
 public class ChangeWalletPinDto {
 
     private String userPassword;
-    private Long walletPin;
+    private String walletPin;
     private Long newWalletPin;
     private Long confirmNewWalletPin;
 

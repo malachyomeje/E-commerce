@@ -90,7 +90,7 @@ public class UsersServiceImp implements UsersService {
         tokenRepository.save(token1);
 
         return new ApiResponse<>("registration successful"
-                +"..  Your wallet pin is 123456789"
+                +"..  Your wallet pin has been sent to you through email"
                 +"  Keep your pin save.",
                 users1.getEmail());
     }

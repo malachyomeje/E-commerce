@@ -25,7 +25,7 @@ public class Wallet {
     private String walletName;
     private float balance;
     private float walletAmount;
-    private Long walletPin;
+    private String walletPin;
     @UpdateTimestamp
     private Date dateWallet;
 

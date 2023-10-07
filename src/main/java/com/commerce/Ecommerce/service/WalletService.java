@@ -12,4 +12,8 @@ public interface WalletService {
     ApiResponse changeWalletPin(ChangeWalletPinDto changeWalletPinDto);
 
     ResponseEntity<String> foundWallet (FoundWalletDto foundWalletDto1);
+
+ //   String generateWalletPassword();
+
+    // String generateWalletPassword();
 }
