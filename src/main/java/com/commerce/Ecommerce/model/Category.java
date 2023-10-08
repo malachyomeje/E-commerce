@@ -26,7 +26,7 @@ public class Category {
     @CreationTimestamp
     private Date creationTime;
     @UpdateTimestamp
-    private  Date updateTime;
+    private  Date updateeTime;
 
     @OneToMany(mappedBy = "category")
     private List<Product> product;
